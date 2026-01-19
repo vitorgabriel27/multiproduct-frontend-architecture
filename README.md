@@ -1,10 +1,4 @@
-Perfeito! Vamos criar um **README claro e didático** para o **Stage-0** do workshop. Ele deve servir para quem está começando, mostrando o objetivo, como rodar o projeto e contextualizando a duplicação das apps.
-
-Aqui está uma sugestão:
-
----
-
-# Stage-0: Setup Inicial do Workshop Multi-Product Frontend
+# Stage-0: Setup Inicial do Multi-Product Frontend
 
 Este é o **Stage-0** da arquitetura frontend multi-product.
 O objetivo desta etapa é **configurar o ambiente inicial** com duas aplicações Next.js separadas, estilizadas com Tailwind CSS, dentro de um monorepo Nx.
