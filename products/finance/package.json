@@ -1,0 +1,14 @@
+{
+    "name": "@multiproduct/finance",
+    "version": "0.0.1",
+    "private": true,
+    "type": "module",
+    "exports": {
+        ".": "./index.ts",
+        "./app/layout": "./app/layout.tsx"
+    },
+    "dependencies": {
+        "@multiproduct/ui": "workspace:*",
+        "tslib": "^2.3.0"
+    }
+}

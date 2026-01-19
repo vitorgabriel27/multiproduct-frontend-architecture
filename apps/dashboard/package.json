@@ -3,9 +3,13 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
+    "@multiproduct/ui": "workspace:*",
+    "@multiproduct/finance": "workspace:*",
+    "@multiproduct/operations": "workspace:*",
     "next": "~16.0.1",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.23",

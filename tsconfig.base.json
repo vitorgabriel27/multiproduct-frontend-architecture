@@ -20,6 +20,15 @@
     "target": "es2022",
     "customConditions": [
       "@org/source"
-    ]
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@multiproduct/finance": [
+        "products/finance"
+      ],
+      "@multiproduct/operations": [
+        "products/operations"
+      ]
+    }
   }
 }

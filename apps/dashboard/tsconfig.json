@@ -19,7 +19,9 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@multiproduct/finance": ["../../products/finance"],
+      "@multiproduct/operations": ["../../products/operations"]
     },
     "types": ["jest", "node"],
     "outDir": "dist",
@@ -47,5 +49,13 @@
     "eslint.config.js",
     "eslint.config.cjs",
     "eslint.config.mjs"
+  ],
+  "references": [
+    {
+      "path": "../../products/operations"
+    },
+    {
+      "path": "../../packages/ui"
+    }
   ]
 }
