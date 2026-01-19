@@ -8,7 +8,7 @@ interface SidebarProps {
 
 export function Sidebar({ links, title, LinkComponent }: SidebarProps) {
     return (
-        <aside className="w-64 bg-secondary border-r border-gray-200 p-4 flex flex-col">
+        <aside className="w-64 bg-white border-r border-gray-200 p-4 flex flex-col text-gray-800">
             <h1 className="text-xl font-bold mb-6">{title}</h1>
             <nav className="flex flex-col gap-2">
                 {links.map((link) =>
