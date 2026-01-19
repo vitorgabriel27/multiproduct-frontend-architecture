@@ -1,34 +1,28 @@
 import './global.css';
 import { ReactNode } from 'react';
 import Link from 'next/link';
+import { AppShell } from '@multiproduct/ui';
 
 export default function RootLayout({ children }: { children: ReactNode }) {
+  const links = [
+    { label: 'Home', href: '/' },
+    { label: 'Tasks', href: '/tasks' },
+  ];
+
   return (
     <html lang="en">
-      <body className="flex h-screen">
-        {/* Sidebar */}
-        <aside className="w-64 bg-white border-r border-gray-200 p-4 flex flex-col">
-          <h1 className="text-xl font-bold mb-6">Operations Dashboard</h1>
-          <nav className="flex flex-col gap-2">
-            <Link href="/" className="p-2 rounded-sm hover:bg-gray-100">
-              Home
+      <body>
+        <AppShell
+          title="Operations Dashboard"
+          links={links}
+          LinkComponent={({ href, children, className }) => (
+            <Link href={href} className={className}>
+              {children}
             </Link>
-            <Link href="/tasks" className="p-2 rounded-sm hover:bg-gray-100">
-              Tasks
-            </Link>
-          </nav>
-        </aside>
-
-        <div className="flex-1 flex flex-col">
-          <header className="h-16 bg-white border-b border-gray-200 flex items-center justify-end px-6">
-            <div className="flex items-center gap-4">
-              <span className="text-sm text-gray-600">Olá, Vitor</span>
-              <div className="w-8 h-8 bg-gray-300 rounded-full"></div>
-            </div>
-          </header>
-
-          <main className="flex-1 p-6 overflow-auto">{children}</main>
-        </div>
+          )}
+        >
+          {children}
+        </AppShell>
       </body>
     </html>
   );
