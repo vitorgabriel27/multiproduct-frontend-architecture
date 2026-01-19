@@ -11,6 +11,12 @@
     },
     {
       "path": "./packages/ui"
+    },
+    {
+      "path": "./products"
+    },
+    {
+      "path": "./products/operations"
     }
   ]
 }
