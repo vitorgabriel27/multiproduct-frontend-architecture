@@ -4,12 +4,6 @@
   "files": [],
   "references": [
     {
-      "path": "./apps/operations-dashboard"
-    },
-    {
-      "path": "./apps/finance-dashboard"
-    },
-    {
       "path": "./packages/ui"
     },
     {
