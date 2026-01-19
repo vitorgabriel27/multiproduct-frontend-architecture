@@ -1,104 +1,88 @@
-# New Nx Repository
+Perfeito! Vamos criar um **README claro e didático** para o **Stage-0** do workshop. Ele deve servir para quem está começando, mostrando o objetivo, como rodar o projeto e contextualizando a duplicação das apps.
 
-<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
+Aqui está uma sugestão:
 
-✨ Your new, shiny [Nx workspace](https://nx.dev) is ready ✨.
+---
 
-[Learn more about this workspace setup and its capabilities](https://nx.dev/nx-api/js?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
+# Stage-0: Setup Inicial do Workshop Multi-Product Frontend
 
-## Generate a library
+Este é o **Stage-0** da arquitetura frontend multi-product.
+O objetivo desta etapa é **configurar o ambiente inicial** com duas aplicações Next.js separadas, estilizadas com Tailwind CSS, dentro de um monorepo Nx.
 
-```sh
-npx nx g @nx/js:lib packages/pkg1 --publishable --importPath=@my-org/pkg1
-```
+---
 
-## Run tasks
+## 📌 Objetivos deste stage
 
-To build the library use:
+* Criar um **monorepo Nx** chamado `frontend-multiproduct`
+* Criar duas aplicações Next.js independentes:
 
-```sh
-npx nx build pkg1
-```
+  * `finance-dashboard`
+  * `operations-dashboard`
+* Configurar **Tailwind CSS** em ambas as aplicações
+* Criar um **layout base duplicado** com Sidebar, Header e Main Content
+* Criar **páginas internas simples** para cada aplicação
+* Demonstrar **duplicação de código**, preparando o workshop para a **refatoração Stage-1**
 
-To run any task with Nx use:
+---
 
-```sh
-npx nx <target> <project-name>
-```
-
-These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
-
-[More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Versioning and releasing
-
-To version and release the library use
+## 🏗 Estrutura do Stage-0
 
 ```
-npx nx release
+apps/
+├── finance-dashboard/
+│   ├── src/app/
+│   │   ├── layout.tsx
+│   │   ├── page.tsx
+│   │   ├── dashboard/page.tsx
+│   │   └── global.css
+├── operations-dashboard/
+│   ├── src/app/
+│   │   ├── layout.tsx
+│   │   ├── page.tsx
+│   │   ├── tasks/page.tsx
+│   │   └── global.css
 ```
 
-Pass `--dry-run` to see what would happen without actually releasing the library.
+---
 
-[Learn more about Nx release &raquo;](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+## ⚡ Como rodar
 
-## Keep TypeScript project references up to date
+1. Instale dependências (recomendado: `pnpm`):
 
-Nx automatically updates TypeScript [project references](https://www.typescriptlang.org/docs/handbook/project-references.html) in `tsconfig.json` files to ensure they remain accurate based on your project dependencies (`import` or `require` statements). This sync is automatically done when running tasks such as `build` or `typecheck`, which require updated references to function correctly.
-
-To manually trigger the process to sync the project graph dependencies information to the TypeScript project references, run the following command:
-
-```sh
-npx nx sync
+```bash
+pnpm install
 ```
 
-You can enforce that the TypeScript project references are always in the correct state when running in CI by adding a step to your CI job configuration that runs the following command:
+2. Inicie o **finance-dashboard**:
 
-```sh
-npx nx sync:check
+```bash
+nx dev finance-dashboard
 ```
 
-[Learn more about nx sync](https://nx.dev/reference/nx-commands#sync)
+3. Inicie o **operations-dashboard**:
 
-## Nx Cloud
-
-Nx Cloud ensures a [fast and scalable CI](https://nx.dev/ci/intro/why-nx-cloud?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) pipeline. It includes features such as:
-
-- [Remote caching](https://nx.dev/ci/features/remote-cache?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Task distribution across multiple machines](https://nx.dev/ci/features/distribute-task-execution?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Automated e2e test splitting](https://nx.dev/ci/features/split-e2e-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Task flakiness detection and rerunning](https://nx.dev/ci/features/flaky-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-### Set up CI (non-Github Actions CI)
-
-**Note:** This is only required if your CI provider is not GitHub Actions.
-
-Use the following command to configure a CI workflow for your workspace:
-
-```sh
-npx nx g ci-workflow
+```bash
+nx dev operations-dashboard
 ```
 
-[Learn more about Nx on CI](https://nx.dev/ci/intro/ci-with-nx#ready-get-started-with-your-provider?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+4. Acesse no navegador:
 
-## Install Nx Console
+* Finance Dashboard: `http://localhost:4200`
+* Operations Dashboard: `http://localhost:4201` (ou porta indicada pelo Nx)
 
-Nx Console is an editor extension that enriches your developer experience. It lets you run tasks, generate code, and improves code autocompletion in your IDE. It is available for VSCode and IntelliJ.
+---
 
-[Install Nx Console &raquo;](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+## 📝 Observações
 
-## Useful links
+* Ambos os apps têm **layouts duplicados intencionalmente**.
+* As páginas internas (`/dashboard` e `/tasks`) mostram conteúdo mínimo para exemplificar navegação.
+* Links de páginas não criadas estão **desabilitados** no sidebar.
+* Esse stage prepara o terreno para a **refatoração Stage-1**, onde componentes serão compartilhados entre os apps.
 
-Learn more:
+---
 
-- [Learn more about this workspace setup](https://nx.dev/nx-api/js?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Learn about Nx on CI](https://nx.dev/ci/intro/ci-with-nx?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Releasing Packages with Nx release](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [What are Nx plugins?](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+## 🎯 Próximo passo
 
-And join the Nx community:
-
-- [Discord](https://go.nx.dev/community)
-- [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
-- [Our Youtube channel](https://www.youtube.com/@nxdevtools)
-- [Our blog](https://nx.dev/blog?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+* Refatorar o layout duplicado para **componentes compartilhados**
+* Implementar **UI comum** para os dashboards
+* Explorar **multi-product architecture** no workshop
