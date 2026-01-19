@@ -17,6 +17,9 @@
     },
     {
       "path": "./products/operations"
+    },
+    {
+      "path": "./apps/dashboard"
     }
   ]
 }
