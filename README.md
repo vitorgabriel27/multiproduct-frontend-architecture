@@ -1,88 +1,73 @@
-Perfeito! Vamos criar um **README claro e didático** para o **Stage-0** do workshop. Ele deve servir para quem está começando, mostrando o objetivo, como rodar o projeto e contextualizando a duplicação das apps.
+# Stage 1 — Shared Layout
 
-Aqui está uma sugestão:
+Branch: `stage-1-shared-layout`
 
----
+## Objetivo
 
-# Stage-0: Setup Inicial do Workshop Multi-Product Frontend
+Neste stage, o foco é fazer a **primeira refatoração segura** do monorepo:
 
-Este é o **Stage-0** da arquitetura frontend multi-product.
-O objetivo desta etapa é **configurar o ambiente inicial** com duas aplicações Next.js separadas, estilizadas com Tailwind CSS, dentro de um monorepo Nx.
-
----
-
-## 📌 Objetivos deste stage
-
-* Criar um **monorepo Nx** chamado `frontend-multiproduct`
-* Criar duas aplicações Next.js independentes:
-
-  * `finance-dashboard`
-  * `operations-dashboard`
-* Configurar **Tailwind CSS** em ambas as aplicações
-* Criar um **layout base duplicado** com Sidebar, Header e Main Content
-* Criar **páginas internas simples** para cada aplicação
-* Demonstrar **duplicação de código**, preparando o workshop para a **refatoração Stage-1**
+* Extrair o layout comum das aplicações (`finance-dashboard` e `operations-dashboard`) para um **pacote compartilhado**.
+* Mostrar os **ganhos imediatos** da abordagem DRY.
+* Estabelecer **separação de responsabilidades** e boundary entre apps e infra.
 
 ---
 
-## 🏗 Estrutura do Stage-0
+## O que foi feito
 
-```
+1. Criado o package `@multiproduct/ui` para abrigar o layout compartilhado.
+2. Refatorado `RootLayout`(`AppShell`) das aplicações para consumir o layout do package.
+3. Configurado Tailwind e CSS global no pacote compartilhado.
+4. Garantido que os estilos funcionem tanto no `finance-dashboard` quanto no `operations-dashboard`.
+5. Demonstração de como compartilhar **componentes, estilos e variáveis globais** entre apps.
+
+---
+
+## Conceitos aplicados
+
+* **DRY (Don't Repeat Yourself):** evita duplicação de layout e estilos entre apps.
+* **Separação de responsabilidades:** cada app mantém sua lógica e roteamento, mas consome layout comum.
+* **Boundary entre app e infra:** `@multiproduct/ui` atua como boundary clara, facilitando manutenção e escalabilidade.
+
+---
+
+## Estrutura
+
+```text
 apps/
-├── finance-dashboard/
-│   ├── src/app/
-│   │   ├── layout.tsx
-│   │   ├── page.tsx
-│   │   ├── dashboard/page.tsx
-│   │   └── global.css
-├── operations-dashboard/
-│   ├── src/app/
-│   │   ├── layout.tsx
-│   │   ├── page.tsx
-│   │   ├── tasks/page.tsx
-│   │   └── global.css
+├─ finance-dashboard/
+│  └─ src/
+│     └─ app/ (pages específicas da aplicação)
+├─ operations-dashboard/
+│  └─ src/
+│     └─ app/ (pages específicas da aplicação)
+
+packages/
+└─ ui/
+   ├─ src/
+   │  ├─ layout/RootLayout.tsx
+   │  ├─ global.css
+   │  └─ components/...
+   └─ package.json
 ```
 
 ---
 
-## ⚡ Como rodar
+## Como rodar
 
-1. Instale dependências (recomendado: `pnpm`):
+Certifique-se de ter **pnpm** instalado:
 
 ```bash
 pnpm install
+pnpm nx serve finance-dashboard
+pnpm nx serve operations-dashboard
 ```
 
-2. Inicie o **finance-dashboard**:
-
-```bash
-nx dev finance-dashboard
-```
-
-3. Inicie o **operations-dashboard**:
-
-```bash
-nx dev operations-dashboard
-```
-
-4. Acesse no navegador:
-
-* Finance Dashboard: `http://localhost:4200`
-* Operations Dashboard: `http://localhost:4201` (ou porta indicada pelo Nx)
+> Ambas as aplicações devem renderizar o layout compartilhado corretamente.
 
 ---
 
-## 📝 Observações
+## Próximos passos
 
-* Ambos os apps têm **layouts duplicados intencionalmente**.
-* As páginas internas (`/dashboard` e `/tasks`) mostram conteúdo mínimo para exemplificar navegação.
-* Links de páginas não criadas estão **desabilitados** no sidebar.
-* Esse stage prepara o terreno para a **refatoração Stage-1**, onde componentes serão compartilhados entre os apps.
-
----
-
-## 🎯 Próximo passo
-
-* Refatorar o layout duplicado para **componentes compartilhados**
-* Implementar **UI comum** para os dashboards
-* Explorar **multi-product architecture** no workshop
+* Criar páginas internas para cada aplicação (Stage 1.1)
+* Introduzir **componentes compartilhados adicionais** no pacote `ui`
+* Preparar para **Stage 2**, onde começaremos a trabalhar com multi-product architecture e compartilhamento de features entre apps.
